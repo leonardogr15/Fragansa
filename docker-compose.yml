@@ -1,0 +1,44 @@
+services:
+  db:
+    # ya no usas image:, ahora construyes desde Dockerfile-db
+    build:
+      context: .
+      dockerfile: Dockerfile-db
+    environment:
+      SA_PASSWORD: "Sa@1234567"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    # volumes:
+    #   - sqlvolume:/var/opt/mssql/data
+
+  api:
+    build:
+      context: .
+      dockerfile: AnimeManager.API/Dockerfile
+    environment:
+      #	apunta al servicio 'db' y no a localhost
+      ConnectionStrings__DefaultConnection: >
+        Server=db,1433;
+        Database=AnimeManager;
+        User Id=sa;
+        Password=Sa@1234567;
+        Encrypt=False;
+        TrustServerCertificate=True;
+      ASPNETCORE_URLS: "http://+:80"
+    ports:
+      - "5115:80"
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+
+# volumes:
+#   sqlvolume:

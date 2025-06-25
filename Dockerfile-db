@@ -1,0 +1,17 @@
+# Dockerfile-db (en la raíz de tu repo)
+FROM mcr.microsoft.com/mssql/server:2022-latest
+
+# 1) Switch a root para fijar permisos
+USER root
+
+# 2) Asegura el directorio de datos y ownership
+RUN mkdir -p /var/opt/mssql/data \
+ && chown -R mssql:0 /var/opt/mssql/data
+
+# 3) Copia y permite ejecución de tu entrypoint
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod 0755 /entrypoint.sh
+
+# 4) Vuelve a mssql y arranca con tu script
+USER mssql
+ENTRYPOINT ["/entrypoint.sh"]

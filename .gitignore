@@ -1,0 +1,63 @@
+# === Visual Studio ===
+.vs/
+# Rider
+.idea/
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# === Build outputs ===
+**/bin/
+**/obj/
+# Publish folder
+**/publish/
+
+# === .NET Core ===
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# === ASP.NET Scaffolding ===
+ScaffoldingReadMe.txt
+
+# === Visual Studio Code ===
+.vscode/
+
+# === OS generated ===
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# === Logs ===
+*.log
+logs/
+
+# === Coverage ===
+coverage/
+coverage.*.json
+lcov-report/
+
+# === Node.js / React (frontend) ===
+/frontend/node_modules/
+/frontend/build/
+/frontend/.env
+/frontend/.env.local
+/frontend/.env.development.local
+/frontend/.env.test.local
+/frontend/.env.production.local
+
+# npm/yarn debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# === Environment files (if los tienes en proyecto raíz) ===
+.env
+*.local.settings.json
+AnimeManager.API/bin/Debug/net9.0/AnimeManager.API.dll
