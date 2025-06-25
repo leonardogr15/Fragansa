@@ -54,7 +54,6 @@ lcov-report/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-package-lock.json
 yarn.lock
 
 # === Environment files (if los tienes en proyecto raíz) ===
